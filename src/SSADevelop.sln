@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimelineComposite", "TimelineComposite", "{3C83CC78-A407-4AB6-94AA-CDDDABB7DE9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimelineComposite.GUI", "TimelineComposite\TimelineComposite.GUI\TimelineComposite.GUI.csproj", "{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimelineComposite", "TimelineComposite\TimelineComposite\TimelineComposite.csproj", "{BDEA1E80-8267-4D11-A98C-01358801C17A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSACore", "SSACore\SSACore.csproj", "{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDEA1E80-8267-4D11-A98C-01358801C17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEA1E80-8267-4D11-A98C-01358801C17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEA1E80-8267-4D11-A98C-01358801C17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEA1E80-8267-4D11-A98C-01358801C17A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F4FA5DE9-5737-488B-87FE-49FD7B7D8F4D} = {3C83CC78-A407-4AB6-94AA-CDDDABB7DE9D}
+		{BDEA1E80-8267-4D11-A98C-01358801C17A} = {3C83CC78-A407-4AB6-94AA-CDDDABB7DE9D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9515884A-19FA-4615-8530-10EB932BB932}
+	EndGlobalSection
+EndGlobal

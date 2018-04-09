@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77E0418C-71C6-473F-B2D5-DD5A70A3DBB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSA</RootNamespace>
+    <AssemblyName>SSACore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extension\SSALabelLine.cs" />
+    <Compile Include="ISSAMultiLine.cs" />
+    <Compile Include="ISSAScope.cs" />
+    <Compile Include="Primitive\SSADialogLine.cs" />
+    <Compile Include="Primitive\SSAEventsSection.cs" />
+    <Compile Include="Primitive\SSAFieldsLine.cs" />
+    <Compile Include="Primitive\SSAFontField.cs" />
+    <Compile Include="Primitive\SSAFormatLine.cs" />
+    <Compile Include="Primitive\SSAFormattedSection.cs" />
+    <Compile Include="Extension\SSAPlaceHolderLine.cs" />
+    <Compile Include="Extension\SSAPlaceInsertLine.cs" />
+    <Compile Include="Primitive\SSAScriptInfoSection.cs" />
+    <Compile Include="Primitive\SSAStyleField.cs" />
+    <Compile Include="Primitive\SSAStyleLine.cs" />
+    <Compile Include="Primitive\SSATitleLine.cs" />
+    <Compile Include="SSALine.cs" />
+    <Compile Include="SSANamedLine.cs" />
+    <Compile Include="Primitive\SSATimeField.cs" />
+    <Compile Include="Primitive\SSAV4PlusStylesSection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamLu\ValueBox.cs" />
+    <Compile Include="Primitive\SSAComment.cs" />
+    <Compile Include="SSADocument.cs" />
+    <Compile Include="ISSALine.cs" />
+    <Compile Include="SSAField.cs" />
+    <Compile Include="SSANamedSection.cs" />
+    <Compile Include="SSASection.cs" />
+    <Compile Include="System\EqualityComparison.cs" />
+    <Compile Include="System\Linq\EnumerableEx.cs" />
+    <Compile Include="System\Linq\IIndexing.cs" />
+    <Compile Include="System\Linq\IndexedItem.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
