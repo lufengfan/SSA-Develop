@@ -19,7 +19,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +50,11 @@
     <Compile Include="CommandLine\NamedFileListOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SSA\PredefineFormatItemException.cs" />
+    <Compile Include="SSA\SSAPredefineLineFormatLine.cs" />
+    <Compile Include="SSA\SSAPredefineLineFormatClearLine.cs" />
+    <Compile Include="SSA\SpecializedSSADocument.cs" />
+    <Compile Include="SSA\SpecializedSSAEventsSection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SSACore\SSACore.csproj">

@@ -21,7 +21,9 @@ namespace SSA
         {
             if (line == null) throw new ArgumentNullException(nameof(line));
 
-            this.lines.Add(this.CreateLine(line));
+            ISSALine ssaLine = this.CreateLine(line);
+            if (ssaLine != null)
+                this.lines.Add(ssaLine);
         }
 
         public void Add(string name, string text)
@@ -43,7 +45,9 @@ namespace SSA
         {
             if (line == null) throw new ArgumentNullException(nameof(line));
 
-            this.lines.Insert(index, this.CreateLine(line));
+            ISSALine ssaLine = this.CreateLine(line);
+            if (ssaLine != null)
+                this.lines.Insert(index, ssaLine);
         }
 
         public bool Remove(ISSALine line) => this.lines.Remove(line ?? throw new ArgumentNullException(nameof(line)));
@@ -62,7 +66,7 @@ namespace SSA
                     return this.CreateNamedLine(match.Groups["LineName"].Value, match.Groups["LineText"].Value);
                 }
                 else
-                    return new SSALine(text);
+                    return new SSARawTextLine(text);
             }
         }
 

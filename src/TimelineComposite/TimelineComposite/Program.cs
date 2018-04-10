@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TimelineComposite.SSA;
 
 namespace TimelineComposite
 {
@@ -25,7 +26,7 @@ namespace TimelineComposite
             ;
 #endif
 
-            SSADocument templateDocument = new SSADocument();
+            SpecializedSSADocument templateDocument = new SpecializedSSADocument();
             templateDocument.Load(Program.TemplateFileName);
 
             SSADocument document = new SSADocument();
@@ -33,7 +34,7 @@ namespace TimelineComposite
                 Program.LangsOrder.Select(order =>
                 {
                     string langTextFileName = Program.LangTextFileNames[order];
-                    SSADocument langSSADocument = new SSADocument();
+                    SpecializedSSADocument langSSADocument = new SpecializedSSADocument();
                     langSSADocument.Load(langTextFileName);
                     return langSSADocument.Sections
                         .OfType<SSANamedSection>()
@@ -294,7 +295,7 @@ namespace TimelineComposite
                                 }
                                 else if (originalSection is SSAScriptInfoSection scriptInfoSection)
                                 {
-                                    foreach (var line in newSection.Lines.OfType<SSANamedLine>().Where(line => !((SSAScriptInfoSection)resultSection).ContainsParameter(line.Name)))
+                                    foreach (var line in newSection.Lines.OfType<SSANamedLine>().Where(line => !((SSAScriptInfoSection)resultSection).ContainsParameter(line.Name) && line.Name != "LangName"))
                                         resultSection.Add(line);
 
                                     langNames.Add(((SSANamedLine)((SSAScriptInfoSection)newSection)["LangName"])?.Text ?? langName);

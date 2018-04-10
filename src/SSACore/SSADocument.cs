@@ -16,7 +16,7 @@ namespace SSA
         protected List<SSASection> sections = new List<SSASection>();
 
         public SSASection[] Sections => this.sections.ToArray();
-        public ISSALine[] Lines => this.sections.Select(section => section.Lines).Join<ISSALine, ISSALine[]>(new SSALine(string.Empty)).ToArray();
+        public ISSALine[] Lines => this.sections.Select(section => section.Lines).Join<ISSALine, ISSALine[]>(new SSARawTextLine(string.Empty)).ToArray();
 
         private SSAScriptInfoSection scriptInfo;
         public SSAScriptInfoSection ScriptInfo

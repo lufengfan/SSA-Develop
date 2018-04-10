@@ -52,6 +52,7 @@
     <Compile Include="Primitive\SSAFormattedSection.cs" />
     <Compile Include="Extension\SSAPlaceHolderLine.cs" />
     <Compile Include="Extension\SSAPlaceInsertLine.cs" />
+    <Compile Include="Primitive\SSARawTextLine.cs" />
     <Compile Include="Primitive\SSAScriptInfoSection.cs" />
     <Compile Include="Primitive\SSAStyleField.cs" />
     <Compile Include="Primitive\SSAStyleLine.cs" />

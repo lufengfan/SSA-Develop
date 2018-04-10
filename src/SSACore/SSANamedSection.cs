@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSA.Primitive;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace SSA
         private string name;
         public string Name => this.name;
 
-        public override ISSALine[] Lines => new[] { new SSALine($"[{this.Name}]") }.Concat(base.Lines).ToArray();
+        public override ISSALine[] Lines => new[] { new SSARawTextLine($"[{this.Name}]") }.Concat(base.Lines).ToArray();
 
         public SSANamedSection(string name)
         {
