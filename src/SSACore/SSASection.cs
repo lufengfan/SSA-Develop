@@ -39,6 +39,8 @@ namespace SSA
             this.Add(this.CreateNamedLine(name, text));
         }
 
+        public void AddComment(string text) => this.Add(new SSAComment(text ?? throw new ArgumentNullException(nameof(text))));
+
         public void Insert(int index, ISSALine line) => this.lines.Insert(index, line ?? throw new ArgumentNullException(nameof(line)));
 
         public void Insert(int index, string line)
