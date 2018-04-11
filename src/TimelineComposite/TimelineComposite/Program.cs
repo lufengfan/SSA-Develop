@@ -17,6 +17,14 @@ namespace TimelineComposite
         public static string[] LangsOrder;
         public static string OutputFileName;
 
+        private static readonly Dictionary<string, string[]> HIRMap = new Dictionary<string, string[]>
+        {
+            /* M\S */                    /*H*/                               /* I */                                 /* R */
+            /* H */     { "HH", new[]{"MS", "MS" } },   { "HI", new[]{"", "M" } },      { "HR", new[]{"MS", "M" } },
+            /* I */     { "IH", new[]{"M", "" } },              { "II", new[]{"M", "" } },      { "IR", new[]{"M", "" } },
+            /* R */     { "RH", new[]{"M", "MS" } },          { "RI", new[]{"", "M" } },      { "RR", new[]{"M", "M" } },
+        };
+
         public static void Run()
         {
 #if false
@@ -137,45 +145,21 @@ namespace TimelineComposite
                                                         }
                                                         else if (line1.Value is SSAPlaceHolderLine || line1.Value is SSAPlaceInsertLine || line2.Value is SSAPlaceHolderLine || line2.Value is SSAPlaceInsertLine)
                                                         {
-                                                            if (line1.Value is SSAPlaceHolderLine)
+                                                            char getHIR(ISSALine __line)
                                                             {
-                                                                argument.MoveNext[0] = true;
-                                                                argument.Skip[0] = true;
+                                                                if (__line is SSAPlaceHolderLine) return 'H';
+                                                                else if (__line is SSAPlaceInsertLine) return 'I';
+                                                                else return 'R';
                                                             }
-                                                            else if (line1.Value is SSAPlaceInsertLine)
-                                                            {
-                                                                argument.MoveNext[0] = true;
-                                                                argument.Skip[0] = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                argument.MoveNext[0] = false;
-                                                                argument.Skip[0] = false;
-                                                            }
+                                                            char[] HIR = argument.Group.Select(item => getHIR(item.Value.Value)).ToArray();
 
-                                                            if (line2.Value is SSAPlaceHolderLine)
+                                                            string[] MSs = Program.HIRMap[new string(HIR)];
+                                                            void setMS(int index, string MS)
                                                             {
-                                                                argument.MoveNext[1] = true;
-                                                                argument.Skip[1] = true;
+                                                                argument.MoveNext[index] = MS.Contains('M');
+                                                                argument.Skip[index] = MS.Contains('S');
                                                             }
-                                                            else if (line2.Value is SSAPlaceInsertLine)
-                                                            {
-                                                                argument.MoveNext[1] = true;
-                                                                argument.Skip[1] = false;
-                                                            }
-                                                            else
-                                                            {
-                                                                argument.MoveNext[1] = false;
-                                                                argument.Skip[1] = false;
-                                                            }
-
-                                                            if (line1.Value is SSAPlaceInsertLine && line2.Value is SSAPlaceInsertLine)
-                                                            {
-                                                                argument.MoveNext[0] = true;
-                                                                argument.MoveNext[1] = false;
-                                                                argument.Skip[0] = false;
-                                                                argument.Skip[1] = false;
-                                                            }
+                                                            MSs.ForEach((MS, index) => setMS(index, MS));
                                                         }
                                                         else if (string.IsNullOrWhiteSpace(line1.Value.LineText) || string.IsNullOrWhiteSpace(line2.Value.LineText))
                                                         {
