@@ -213,7 +213,7 @@ namespace System.Linq
                 argument = new Argument<TSource>(
                     enumerators.Select((enumerator, index) =>
                     {
-                        if (hasNexts[index] && !argument.Skip[index])
+                        if (hasNexts[index] && argument.MoveNext[index])
                             return enumerator.Current;
                         else
                             return ValueBox<TSource>.Empty;
@@ -233,10 +233,15 @@ namespace System.Linq
                             return ValueBox<TSource>.Empty;
                     }).ToArray();
 
-                    if (acceptable && group.Any(item => item.HasValue))
+                    if (!acceptable)
+                        continue;
+                    else if (group.Any(item => item.HasValue))
                         yield return group;
                     else
+                    {
+                        Array.Clear(argument.Skip, 0, argument.Skip.Length);
                         continue;
+                    }
                 }
             }
         }

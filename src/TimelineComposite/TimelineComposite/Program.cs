@@ -137,13 +137,11 @@ namespace TimelineComposite
                                                         IIndexing<ISSALine> line1 = argument.Group[0].Value;
                                                         IIndexing<ISSALine> line2 = argument.Group[1].Value;
 
-                                                        if (line1.Value is SSALabelLine ^ line2.Value is SSALabelLine)
-                                                            argument.Cancel = true;
-                                                        else if (line1.Value is SSALabelLine && line2.Value is SSALabelLine)
+                                                        if (line1.Value is SSALabelLine && line2.Value is SSALabelLine)
                                                         {
                                                             argument.Skip[0] = true;
                                                             argument.Skip[1] = true;
-                                                            argument.Cancel = ((SSALabelLine)line1).LineText != ((SSALabelLine)line2).LineText;
+                                                            argument.Cancel = ((SSALabelLine)line1.Value).LineText != ((SSALabelLine)line2.Value).LineText;
                                                         }
                                                         else if (line1.Value is SSAPlaceHolderLine || line1.Value is SSAPlaceInsertLine || line2.Value is SSAPlaceHolderLine || line2.Value is SSAPlaceInsertLine)
                                                         {
@@ -163,17 +161,20 @@ namespace TimelineComposite
                                                             }
                                                             MSs.ForEach((MS, index) => setMS(index, MS));
                                                         }
+                                                        else if (line1.Value is SSALabelLine ^ line2.Value is SSALabelLine)
+                                                            argument.Cancel = true;
                                                         else if (string.IsNullOrWhiteSpace(line1.Value.LineText) || string.IsNullOrWhiteSpace(line2.Value.LineText))
                                                         {
                                                             if (string.IsNullOrWhiteSpace(line1.Value.LineText))
-                                                                argument.MoveNext[0] = true;
-                                                            else
-                                                                argument.MoveNext[0] = false;
-
-                                                            if (string.IsNullOrWhiteSpace(line2.Value.LineText))
-                                                                argument.MoveNext[1] = true;
-                                                            else
+                                                            {
+                                                                argument.Skip[0] = true;
                                                                 argument.MoveNext[1] = false;
+                                                            }
+                                                            else if (string.IsNullOrWhiteSpace(line2.Value.LineText))
+                                                            {
+                                                                argument.Skip[1] = true;
+                                                                argument.MoveNext[0] = false;
+                                                            }
 
                                                             return false;
                                                         }
